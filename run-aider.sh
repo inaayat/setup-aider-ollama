@@ -8,4 +8,4 @@ set -euo pipefail
 source "$HOME/aider-env/bin/activate"
 export OLLAMA_API_BASE=http://127.0.0.1:11434
 cd "$HOME/aider-test"
-aider --model ollama_chat/gemma2:9b app.py
+aider --model ollama_chat/gemma3:27b app.py
