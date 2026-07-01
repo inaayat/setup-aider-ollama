@@ -5,7 +5,8 @@ set -euo pipefail
 # Working macOS setup for Ollama + Aider using Python 3.12 virtual environment.
 # This avoids Python 3.14 dependency issues seen when installing aider-chat.
 
-MODEL="gemma3:27b"
+MODEL=""
+MODEL_SET="false"
 PROJECT_DIR="$HOME/aider-test"
 VENV_DIR="$HOME/aider-env"
 PY312="/opt/homebrew/bin/python3.12"
@@ -15,15 +16,17 @@ usage() {
 Usage: ./setup-aider-ollama-mac.sh [options]
 
 Options:
-  --model MODEL       Ollama model to pull/use. Default: gemma2:9b
+  --model MODEL       Skip menu and use a specific model
   --project PATH      Test project folder. Default: ~/aider-test
   --venv PATH         Python virtual environment folder. Default: ~/aider-env
   -h, --help          Show this help
 
 Examples:
-  ./setup-aider-ollama-mac.sh
-  ./setup-aider-ollama-mac.sh --model llama3.2:latest
-  ./setup-aider-ollama-mac.sh --model qwen3-coder:30b
+./setup-aider-ollama-mac.sh
+./setup-aider-ollama-mac.sh --model gemma3:27b
+./setup-aider-ollama-mac.sh --model gemma3:12b
+./setup-aider-ollama-mac.sh --model qwen3-coder:30b
+
 EOF
 }
 
@@ -31,6 +34,7 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --model)
       MODEL="$2"
+      MODEL_SET="true"
       shift 2
       ;;
     --project)
@@ -52,6 +56,115 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
+
+# Show model menu if user didn't specify --model
+if [[ "$MODEL_SET" != "true" ]]; then
+
+  echo ""
+  echo "============================================================"
+  echo "Select an Ollama Model"
+  echo "============================================================"
+  echo ""
+
+  echo "Recommended by RAM:"
+  echo "  8GB+   → gemma3:4b"
+  echo " 16GB+   → gemma3:12b"
+  echo " 32GB+   → gemma3:27b"
+  echo " 64GB+   → qwen3-coder:30b"
+  echo ""
+
+  echo "1) gemma3:4b         (smallest / fastest)"
+  echo "2) gemma3:12b        (balanced)"
+  echo "3) gemma3:27b        (recommended)"
+  echo "4) qwen3-coder:30b   (best coding model)"
+  echo "5) llama3.2:latest"
+  echo "6) Custom model"
+  echo ""
+
+  read -rp "Choose a model [1-6]: " choice
+
+  case "$choice" in
+    1)
+      MODEL="gemma3:4b"
+      ;;
+    2)
+      MODEL="gemma3:12b"
+      ;;
+    3)
+      MODEL="gemma3:27b"
+      ;;
+    4)
+      MODEL="qwen3-coder:30b"
+      ;;
+    5)
+      MODEL="llama3.2:latest"
+      ;;
+    6)
+      read -rp "Enter Ollama model name: " MODEL
+      ;;
+    *)
+      echo ""
+      echo "Invalid choice. Using default:"
+      echo "gemma3:27b"
+      MODEL="gemma3:27b"
+      ;;
+  esac
+fi
+
+# Show model menu if user didn't specify --model
+if [[ "$MODEL_SET" != "true" ]]; then
+
+  echo ""
+  echo "============================================================"
+  echo "Select an Ollama Model"
+  echo "============================================================"
+  echo ""
+
+  echo "Recommended by RAM:"
+  echo "  8GB+   → gemma3:4b"
+  echo " 16GB+   → gemma3:12b"
+  echo " 32GB+   → gemma3:27b"
+  echo " 64GB+   → qwen3-coder:30b"
+  echo ""
+
+  echo "1) gemma3:4b         (smallest / fastest)"
+  echo "2) gemma3:12b        (balanced)"
+  echo "3) gemma3:27b        (recommended)"
+  echo "4) qwen3-coder:30b   (best coding model)"
+  echo "5) llama3.2:latest"
+  echo "6) Custom model"
+  echo ""
+
+  read -rp "Choose a model [1-6]: " choice
+
+  case "$choice" in
+    1)
+      MODEL="gemma3:4b"
+      ;;
+    2)
+      MODEL="gemma3:12b"
+      ;;
+    3)
+      MODEL="gemma3:27b"
+      ;;
+    4)
+      MODEL="qwen3-coder:30b"
+      ;;
+    5)
+      MODEL="llama3.2:latest"
+      ;;
+    6)
+      read -rp "Enter Ollama model name: " MODEL
+      ;;
+    *)
+      echo ""
+      echo "Invalid choice. Using default:"
+      echo "gemma3:27b"
+      MODEL="gemma3:27b"
+      ;;
+  esac
+fi
+
 
 header() {
   echo ""
