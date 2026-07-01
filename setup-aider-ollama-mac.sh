@@ -5,7 +5,7 @@ set -euo pipefail
 # Working macOS setup for Ollama + Aider using Python 3.12 virtual environment.
 # This avoids Python 3.14 dependency issues seen when installing aider-chat.
 
-MODEL="gemma2:9b"
+MODEL="gemma3:27b"
 PROJECT_DIR="$HOME/aider-test"
 VENV_DIR="$HOME/aider-env"
 PY312="/opt/homebrew/bin/python3.12"
