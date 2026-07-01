@@ -11,11 +11,10 @@ The goal is to get a **free/local Claude-Code-like workflow** where an AI agent 
 How to active after installation
 
 ```bash
-source ~/aider-env/bin/activate
 
-cd ~/aider-capabilities
+cd ~/my-project
+source ~/aider-env/bin/activate && aider --model ollama_chat/gemma3:27b
 
-aider --model ollama_chat/gemma3:27b
 ```
 
 ## What the script does
@@ -76,13 +75,6 @@ Alternative coding model:
 ```bash
 ./setup-local-aider.sh --project ~/Documents/local-ai-test
 ```
-
-## Important notes
-
-- This script does **not** download from Hugging Face.
-- `ollama pull ...` downloads models through Ollama.
-- Use local AI carefully. Do not point it at sensitive/company data unless your company policy explicitly allows that.
-- Review all Aider changes before relying on them.
 
 ## Common commands
 
