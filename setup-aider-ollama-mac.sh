@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+ #!/usr/bin/env bash
 set -euo pipefail
 
 # setup-aider-ollama-mac.sh
@@ -110,6 +110,9 @@ if [[ "$MODEL_SET" != "true" ]]; then
       ;;
   esac
 fi
+
+# Show model menu if user didn't specify --model
+if [[ "$MODEL_SET" != "true" ]]; then
 
   echo ""
   echo "============================================================"
