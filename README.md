@@ -7,6 +7,12 @@ Aider -> Ollama -> local coding model -> your files
 ```
 
 The goal is to get a **free/local Claude-Code-like workflow** where an AI agent can read and edit files in a git repo without consuming a cloud/token budget.
+## Quick Start Cheat Sheet
+How to active after installation
+
+source ~/aider-env/bin/activate
+cd ~/aider-capabilities
+aider --model ollama_chat/gemma3:27b
 
 ## What the script does
 
