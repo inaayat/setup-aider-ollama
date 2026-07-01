@@ -10,11 +10,12 @@ The goal is to get a **free/local Claude-Code-like workflow** where an AI agent 
 ## Quick Start Cheat Sheet
 How to active after installation
 
-source ~/aider-env/bin/activate
+```source ~/aider-env/bin/activate
 
 cd ~/aider-capabilities
 
 aider --model ollama_chat/gemma3:27b
+```
 
 ## What the script does
 
