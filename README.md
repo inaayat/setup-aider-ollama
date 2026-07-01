@@ -1,107 +1,83 @@
 # Local Aider + Ollama Setup for macOS
 
-This repo contains a single setup script that installs and configures a local AI coding workflow:
+This repository contains everything needed to set up a local AI coding assistant using:
 
 ```text
-Aider -> Ollama -> local coding model -> your files
+Aider → Ollama → Gemma 3 27B → Your Files
 ```
 
-The goal is to get a **free/local Claude-Code-like workflow** where an AI agent can read and edit files in a git repo without consuming a cloud/token budget.
-## Quick Start Cheat Sheet
-How to active after installation
+The goal is to create a free, local coding assistant that can read and edit files without consuming cloud AI credits.
+
+---
+
+# Quick Start (Once Setup Is Complete)
+
+Open Terminal and run:
 
 ```bash
-
 cd ~/my-project
 source ~/aider-env/bin/activate && aider --model ollama_chat/gemma3:27b
-
 ```
 
-## What the script does
+Replace `~/my-project` with the folder you want Aider to work on.
 
-`setup-local-aider.sh` will:
+---
 
-1. Check that you are on macOS.
-2. Install Homebrew if needed.
-3. Install Ollama if needed.
-4. Start the Ollama service.
-5. Pull a local coding model.
-6. Install Aider.
-7. Add the Ollama API base URL to `~/.zshrc`.
-8. Create a tiny test project so you can confirm Aider can edit files.
+# Repository Contents
 
-## Quick start
-
-```bash
-chmod +x setup-local-aider.sh
-./setup-local-aider.sh
-```
-
-Then run:
-
-```bash
-cd ~/aider-ollama-test
-aider --model ollama_chat/qwen2.5-coder:14b
-```
-
-Inside Aider, try:
+The repository should contain:
 
 ```text
-Update app.py so it asks for my name and greets me.
+README.md
+setup-aider-ollama-mac.sh
+run-aider.sh
+verify-setup.sh
+TROUBLESHOOTING.md
+.gitignore
 ```
 
-## Optional model choices
+---
 
-Default:
+# Download the Repository
+
+## Option 1: Download ZIP
+
+On GitHub:
+
+```text
+Code → Download ZIP
+```
+
+Extract the ZIP and open Terminal in the extracted folder.
+
+## Option 2: Clone the Repository
 
 ```bash
-./setup-local-aider.sh --model qwen2.5-coder:14b
+git clone https://github.com/<your-username>/setup-aider-ollama.git
+
+cd setup-aider-ollama
 ```
 
-Smaller/faster:
+---
+
+# Installation
+
+Make the scripts executable:
 
 ```bash
-./setup-local-aider.sh --model qwen2.5-coder:7b
+chmod +x setup-aider-ollama-mac.sh run-aider.sh verify-setup.sh
 ```
 
-Alternative coding model:
+Run setup:
 
 ```bash
-./setup-local-aider.sh --model deepseek-coder:6.7b-instruct-q4_K_M
+./setup-aider-ollama-mac.sh
 ```
 
-## Optional project folder
+The setup script will:
 
-```bash
-./setup-local-aider.sh --project ~/Documents/local-ai-test
-```
-
-## Common commands
-
-```bash
-ollama list
-ollama ps
-ollama run qwen2.5-coder:14b
-aider --model ollama_chat/qwen2.5-coder:14b
-```
-
-## Troubleshooting
-
-If Aider cannot connect to Ollama, run:
-
-```bash
-OLLAMA_CONTEXT_LENGTH=8192 ollama serve
-```
-
-Then open another terminal and run:
-
-```bash
-export OLLAMA_API_BASE=http://127.0.0.1:11434
-aider --model ollama_chat/qwen2.5-coder:14b
-```
-
-If `aider` is not found after install, open a new terminal or run:
-
-```bash
-source ~/.zshrc
-```
+- Install Homebrew (if needed)
+- Install Ollama (if needed)
+- Start Ollama
+- Download Gemma 3 27B
+- Install Python 3.12
