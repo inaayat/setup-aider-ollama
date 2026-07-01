@@ -9,6 +9,15 @@ Aider → Ollama → Gemma 3 27B → Your Files
 The goal is to create a free, local coding assistant that can read and edit files without consuming cloud AI credits.
 
 ---
+# Quick Install
+
+Run:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/inaayat/setup-aider-ollama/main/setup-aider-ollama-mac.sh | bash
+```
+
+---
 
 # Quick Start (Once Setup Is Complete)
 
