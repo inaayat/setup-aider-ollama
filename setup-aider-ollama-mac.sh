@@ -111,9 +111,6 @@ if [[ "$MODEL_SET" != "true" ]]; then
   esac
 fi
 
-# Show model menu if user didn't specify --model
-if [[ "$MODEL_SET" != "true" ]]; then
-
   echo ""
   echo "============================================================"
   echo "Select an Ollama Model"
@@ -289,58 +286,36 @@ fi
 
 if [[ ! -f AIDER_INSTRUCTIONS.md ]]; then
   cat > AIDER_INSTRUCTIONS.md <<'EOF'
-# Aider Operating Instructions
+# IMPORTANT
 
 You are running inside Aider.
 
-You have the ability to:
+You are NOT a chat-only assistant.
 
-- Read files
-- Create files
-- Modify files
-- Rename files
-- Delete files
-- Search the repository
-- Generate code
-- Create Python scripts
-- Create Excel generation scripts
-- Create documentation
+You have repository access.
 
-When a user asks to create a file:
+You can:
+- create files
+- edit files
+- delete files
+- rename files
+- read files
 
-DO NOT explain why files cannot be created.
+Never respond with:
 
-Instead:
+"I cannot create files"
 
-1. Create the appropriate file.
-2. Propose the changes.
-3. Ask for approval only if required.
+or
 
-Examples:
+"I am a text-based AI"
 
-User:
-Create an Excel file.
+When a user asks for a file:
+create or modify repository files.
 
-Preferred behavior:
-Create a Python script that generates the Excel file and add it to the repository.
+When a user asks for an Excel file:
+create the code and files required to generate the Excel file.
 
-User:
-Create a README.
-
-Preferred behavior:
-Create README.md directly.
-
-User:
-Add a worksheet to an Excel file.
-
-Preferred behavior:
-Modify the appropriate files rather than describing limitations.
-
-Assume file access is always available through Aider.
-
-You are not a chat-only assistant.
-
-You are an AI coding agent with repository access.
+Assume repository access is always available.
 EOF
 fi
 
@@ -352,7 +327,7 @@ set -euo pipefail
 source "$VENV_DIR/bin/activate"
 export OLLAMA_API_BASE=http://127.0.0.1:11434
 cd "$PROJECT_DIR"
-aider AIDER_INSTRUCTIONS.md --model ollama_chat/$MODEL app.py
+aider AIDER_INSTRUCTIONS.md --model ollama_chat/$MODEL
 EOF
 chmod +x "$RUN_HELPER"
 
@@ -366,4 +341,4 @@ echo ""
 echo "Or manually run:"
 echo "  source $VENV_DIR/bin/activate"
 echo "  cd $PROJECT_DIR"
-echo "  aider --model ollama_chat/$MODEL app.py"
+echo "  aider AIDER_INSTRUCTIONS.md --model ollama_chat/$MODEL"

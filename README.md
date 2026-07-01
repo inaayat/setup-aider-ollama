@@ -25,7 +25,7 @@ Open Terminal and run:
 
 ```bash
 cd ~/my-project
-source ~/aider-env/bin/activate && aider --model ollama_chat/gemma3:27b
+./run-aider.sh
 ```
 
 Replace `~/my-project` with the folder containing the files you want Aider to edit.
@@ -152,7 +152,7 @@ git init
 Start Aider:
 
 ```bash
-source ~/aider-env/bin/activate && aider --model ollama_chat/gemma3:27b
+./run-aider.sh
 ```
 
 Then try:
@@ -169,7 +169,7 @@ Whenever you open a new terminal:
 
 ```bash
 cd ~/my-project
-source ~/aider-env/bin/activate && aider --model ollama_chat/gemma3:27b
+./run-aider.sh
 ```
 
 Replace `~/my-project` with the folder containing the files you want Aider to edit.
@@ -288,7 +288,7 @@ Example:
 
 ```bash
 cd ~/Projects/excel-tools
-source ~/aider-env/bin/activate && aider --model ollama_chat/gemma3:27b
+./run-aider.sh
 ```
 
 ---
@@ -306,7 +306,7 @@ git init
 Start Aider:
 
 ```bash
-source ~/aider-env/bin/activate && aider --model ollama_chat/gemma3:27b
+./run-aider.sh
 ```
 
 Ask Aider:

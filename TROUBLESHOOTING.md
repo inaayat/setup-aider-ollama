@@ -105,7 +105,7 @@ Use a smaller model:
 or:
 
 ```bash
-./setup-aider-ollama-mac.sh --model gemma2:9b
+./setup-aider-ollama-mac.sh --model gemma3:4b
 ```
 
 ---
