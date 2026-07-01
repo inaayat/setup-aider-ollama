@@ -10,7 +10,8 @@ The goal is to get a **free/local Claude-Code-like workflow** where an AI agent 
 ## Quick Start Cheat Sheet
 How to active after installation
 
-```source ~/aider-env/bin/activate
+```bash
+source ~/aider-env/bin/activate
 
 cd ~/aider-capabilities
 
